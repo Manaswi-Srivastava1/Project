@@ -1,0 +1,61 @@
+/* ===== Fixes (style.css ke baad load hoti hai) ===== */
+
+html { scroll-padding-top: 80px; }
+
+button, input, select { font-family: inherit; }
+
+/* Keyboard se chalate waqt highlight dikhe */
+:focus-visible { outline: 3px solid #ffb800; outline-offset: 2px; }
+.search-box input:focus-visible,
+.modal-box input:focus-visible,
+.modal-box select:focus-visible,
+.chat-input input:focus-visible { outline: none; }
+
+/* About ka tagline yellow par dikhta nahi tha */
+.about .tagline { color: #000; }
+
+.hero-buttons { flex-wrap: wrap; }
+.tutor-content { min-width: 0; }
+
+/* Better contrast */
+.section-heading p { color: #9a6b00; }
+footer p { color: #bbb; }
+footer small { color: #999; }
+
+/* Mobile menu */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 2px solid #ffb800;
+  color: #ffb800;
+  font-size: 20px;
+  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #000;
+    border-top: 1px solid #333;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    padding: 16px 7%;
+    border-bottom: 1px solid #222;
+  }
+}

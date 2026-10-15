@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Walk-In Tutor connects students and parents with trusted college students who teach nearby at affordable prices.">
+<title>Walk-In Tutor</title>
+<link rel="icon" type="image/jpeg" href="logo.jpeg">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style-additions.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<style>
+  #mapView { max-width: 1100px; height: 450px; margin: 30px auto; border: 4px solid #000; border-radius: 20px; position: relative; z-index: 0; }
+  .loc-btn { background: #fff; color: #000; border: 2px solid #000; border-radius: 7px; padding: 12px; cursor: pointer; font-weight: bold; }
+  .loc-btn:hover { background: #ffb800; }
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <a href="#home" class="logo"><img src="logo.jpeg" alt="Walk-In Tutor"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#find">Find Tutor</a>
+    <a href="#how">How It Works</a>
+    <a href="#about">About</a>
+  </div>
+  <div class="nav-actions">
+    <button class="login-btn" id="dashBtn" style="display:none;background:transparent;color:#ffb800" onclick="openDashboard()">My Requests</button>
+    <button class="login-btn" onclick="openLogin()">Login</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="tagline">LEARN • INSPIRE • INNOVATE</p>
+    <h1>Learn from someone <span>near you.</span></h1>
+    <p class="hero-text">Walk-In Tutor connects students and parents with trusted college students who can teach nearby at affordable prices.</p>
+    <div class="hero-buttons">
+      <button class="primary-btn" onclick="scrollToFind()">Find a Tutor</button>
+      <button class="secondary-btn" onclick="openTeacherForm()">Become a Tutor</button>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="nearby">📍 Nearby Tutor</div>
+    <div class="hero-avatar">👩🏻</div>
+    <h3>Manaswi Srivastava</h3>
+    <p>BCA</p>
+    <div class="rating">⭐ 4.9</div>
+    <div class="hero-details"><span>📚 Maths • Science</span><span>📍 1.2 km</span></div>
+    <strong>₹2000 / month</strong>
+  </div>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles">
+  <div class="section-heading">
+    <p>GET STARTED</p>
+    <h2>What are you looking for?</h2>
+    <span>Choose your role and get started.</span>
+  </div>
+  <div class="role-container">
+    <div class="role-card">
+      <div class="role-icon">👩‍🏫</div>
+      <h3>I Want To Teach</h3>
+      <p>Are you a college student? Create your tutor profile, teach students nearby and earn part-time income.</p>
+      <button onclick="openTeacherForm()">Create Tutor Profile →</button>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">👨‍👩‍👧</div>
+      <h3>I Need A Tutor</h3>
+      <p>Find trusted and affordable tutors according to class, subject, location and budget.</p>
+      <button onclick="scrollToFind()">Find a Tutor →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIND TUTOR ================= -->
+<section class="find-section" id="find">
+  <div class="section-heading">
+    <p>FIND YOUR MATCH</p>
+    <h2>Find a tutor near you</h2>
+    <span>Search by name, subject, class or area.</span>
+  </div>
+  <div class="search-box">
+    <input type="text" id="searchInput" aria-label="Search tutors" placeholder="Search Maths, English, Kunraghat...">
+    <select id="classFilter" aria-label="Filter by class">
+      <option value="">All Classes</option>
+      <option value="5">Class 5</option>
+      <option value="6">Class 6</option>
+      <option value="7">Class 7</option>
+      <option value="8">Class 8</option>
+      <option value="9">Class 9</option>
+      <option value="10">Class 10</option>
+      <option value="11">Class 11</option>
+      <option value="12">Class 12</option>
+    </select>
+    <button onclick="searchTutors()">Search 🔍</button>
+  </div>
+
+  <!-- Tutor cards yahan database se aate hain -->
+  <div class="tutor-grid" id="tutorGrid"></div>
+
+  <p id="noResult">😕 No tutor found. Try another search.</p>
+</section>
+
+<!-- ================= MAP ================= -->
+<section class="map-section">
+  <div class="section-heading">
+    <p>NEARBY TUTORS</p>
+    <h2>Explore tutors around you</h2>
+    <span>Find tutors close to your location.</span>
+  </div>
+  <div style="text-align:center;margin-top:25px">
+    <button class="primary-btn" style="background:#000;color:#fff;border-color:#000" onclick="locateMe()">📍 Mere paas ke tutors dikhao</button>
+  </div>
+  <div id="mapView"></div>
+  <p style="text-align:center;color:#666;font-size:13px">Tutor ki location sirf lagbhag area (±1 km) dikhai jati hai, ghar ka exact pata nahi.</p>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how" id="how">
+  <div class="section-heading">
+    <p>HOW IT WORKS</p>
+    <h2>Simple. Local. Trusted.</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><span>01</span><h3>Create Profile</h3><p>Tutors add their subjects, classes, fees and location.</p></div>
+    <div class="step"><span>02</span><h3>Find Your Match</h3><p>Parents find suitable tutors according to their requirements.</p></div>
+    <div class="step"><span>03</span><h3>Take A Demo</h3><p>Take a demo before deciding whether the tutor is right.</p></div>
+    <div class="step"><span>04</span><h3>Start Learning</h3><p>Like the tutor? Start your classes!</p></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div>
+    <p class="tagline">ABOUT WALK-IN TUTOR</p>
+    <h2>Helping students teach. Helping students learn.</h2>
+  </div>
+  <p>Walk-In Tutor is a platform designed to connect college students looking for part-time teaching opportunities with parents and students looking for affordable tutors nearby.</p>
+</section>
+
+</main>
+
+<!-- ================= TEACHER MODAL ================= -->
+<div class="modal" id="teacherModal">
+  <div class="modal-box">
+    <button class="close" aria-label="Close" onclick="closeTeacherForm()">×</button>
+    <h2>Become a Tutor 👩‍🏫</h2>
+    <p>Create your tutor profile.</p>
+    <form id="teacherForm">
+      <input type="text" id="teacherName" aria-label="Full name" placeholder="Full Name" required>
+      <input type="email" id="teacherEmail" aria-label="Email" placeholder="Email Address" required>
+      <input type="tel" id="phone" aria-label="Contact number" placeholder="Contact Number" required>
+      <input type="text" id="college" aria-label="College" placeholder="College Name" required>
+      <input type="text" id="course" aria-label="Course" placeholder="Course / Degree" required>
+      <input type="text" id="subjects" aria-label="Subjects" placeholder="Subjects e.g. Maths, Science" required>
+      <select id="teachingClass" aria-label="Classes you can teach" required>
+        <option value="">Classes you can teach</option>
+        <option>Class 5 - 8</option>
+        <option>Class 6 - 10</option>
+        <option>Class 9 - 12</option>
+      </select>
+      <input type="text" id="area" aria-label="Area" placeholder="Your Area" required>
+      <input type="number" id="fees" min="0" aria-label="Monthly fee" placeholder="Expected monthly fee ₹" required>
+      <select id="mode" aria-label="Teaching mode" required>
+        <option value="">Teaching Mode</option>
+        <option>At Student's Home</option>
+        <option>At Tutor's Home</option>
+        <option>Online</option>
+      </select>
+      <input type="hidden" id="tutorLat">
+      <input type="hidden" id="tutorLng">
+      <button type="button" class="loc-btn" onclick="setTutorLocation()">📍 Meri location set karo (optional)</button>
+      <small id="locStatus" style="color:#666"></small>
+      <button type="submit" class="form-btn">Create Profile</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= LOGIN / SIGNUP MODAL ================= -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <button class="close" aria-label="Close" onclick="closeLogin()">×</button>
+
+    <div id="loginView">
+      <h2>Welcome Back 👋</h2>
+      <p style="color:#666;margin-bottom:20px">Login to Walk-In Tutor.</p>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" aria-label="Email" placeholder="Email" required>
+        <input type="password" id="loginPassword" aria-label="Password" placeholder="Password" required>
+        <button type="submit" class="form-btn">Login</button>
+      </form>
+      <p style="margin-top:15px;font-size:14px">
+        Account nahi hai?
+        <a href="#" onclick="showSignup(); return false;"><b>Signup karo</b></a>
+      </p>
+    </div>
+
+    <div id="signupView" style="display:none">
+      <h2>Create Account ✨</h2>
+      <p style="color:#666;margin-bottom:20px">Join Walk-In Tutor.</p>
+      <form id="signupForm">
+        <input type="text" id="signupName" aria-label="Full name" placeholder="Full Name" required>
+        <input type="email" id="signupEmail" aria-label="Email" placeholder="Email" required>
+        <input type="password" id="signupPassword" aria-label="Password" placeholder="Password (min 8 characters)" minlength="8" required>
+        <select id="signupRole" aria-label="Account type" required>
+          <option value="">Main kaun hoon?</option>
+          <option value="parent">Parent / Student (tutor dhundhna hai)</option>
+          <option value="tutor">Tutor (padhana hai)</option>
+        </select>
+        <button type="submit" class="form-btn">Signup</button>
+      </form>
+      <p style="margin-top:15px;font-size:14px">
+        Pehle se account hai?
+        <a href="#" onclick="showLogin(); return false;"><b>Login karo</b></a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DEMO MODAL ================= -->
+<div class="modal" id="demoModal">
+  <div class="modal-box">
+    <button class="close" aria-label="Close" onclick="closeDemo()">×</button>
+    <h2 id="demoTitle">Demo Request</h2>
+    <p>Apna phone number daalo, tutor aapse contact karega. Aapka number sirf is tutor ko dikhaya jayega.</p>
+    <form id="demoForm">
+      <input type="tel" id="demoPhone" aria-label="Your phone number" placeholder="Your phone number" required>
+      <input type="text" id="demoMessage" aria-label="Message" placeholder="Message (optional)" maxlength="300">
+      <button type="submit" class="form-btn">Send Request</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= TUTOR DASHBOARD MODAL ================= -->
+<div class="modal" id="dashModal">
+  <div class="modal-box">
+    <button class="close" aria-label="Close" onclick="closeDashboard()">×</button>
+    <h2>My Requests 📩</h2>
+    <p id="dashStatus">Loading...</p>
+    <div id="dashList"></div>
+  </div>
+</div>
+
+<!-- ================= AI CHAT ================= -->
+<button class="ai-button" aria-label="Open Walk-In AI chat" onclick="openAI()">🤖</button>
+
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">
+    <strong>Walk-In AI 🤖</strong>
+    <button aria-label="Close chat" onclick="closeAI()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="bot-message">Hi! 👋 I'm Walk-In AI. Tell me what kind of tutor you're looking for.</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" aria-label="Chat message" placeholder="Ask about tutors...">
+    <button aria-label="Send" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-logo"><img src="logo.jpeg" alt="Walk-In Tutor"></div>
+  <p>Learn Nearby. Teach Nearby. Earn Nearby.</p>
+  <small>© 2026 Walk-In Tutor. All Rights Reserved.</small>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

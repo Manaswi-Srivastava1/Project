@@ -1,0 +1,1441 @@
+/* ================= GENERAL ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f7f4eb;
+
+    color: #171717;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: #000;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+.logo img {
+
+    width: 105px;
+
+    height: 72px;
+
+    object-fit: contain;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    gap: 35px;
+}
+
+
+.nav-links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+
+.nav-links a:hover {
+
+    color: #ffb800;
+}
+
+
+.login-btn {
+
+    padding: 11px 25px;
+
+    border-radius: 25px;
+
+    border: 2px solid #ffb800;
+
+    background: #ffb800;
+
+    color: #000;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.login-btn:hover {
+
+    background: white;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+
+    min-height: 650px;
+
+    padding: 90px 10%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 70px;
+
+    background: #000;
+
+    color: white;
+}
+
+
+.hero-content {
+
+    max-width: 650px;
+}
+
+
+.tagline {
+
+    color: #ffb800;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+
+.hero h1 {
+
+    font-size: 62px;
+
+    line-height: 1.08;
+
+    margin-bottom: 25px;
+}
+
+
+.hero h1 span {
+
+    color: #ffb800;
+}
+
+
+.hero-text {
+
+    color: #d0d0d0;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+
+.primary-btn,
+.secondary-btn {
+
+    padding: 15px 28px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.primary-btn {
+
+    background: #ffb800;
+
+    color: #000;
+
+    border: 2px solid #ffb800;
+}
+
+
+.primary-btn:hover {
+
+    background: white;
+
+    border-color: white;
+}
+
+
+.secondary-btn {
+
+    background: transparent;
+
+    color: white;
+
+    border: 2px solid white;
+}
+
+
+.secondary-btn:hover {
+
+    background: white;
+
+    color: black;
+}
+
+
+/* ================= HERO CARD ================= */
+
+.hero-card {
+
+    width: 320px;
+
+    padding: 30px;
+
+    background: #fdf8e9;
+
+    color: #111;
+
+    border-radius: 20px;
+
+    border: 5px solid #ffb800;
+
+    box-shadow: 12px 12px 0 #ffb800;
+
+    text-align: center;
+}
+
+
+.nearby {
+
+    text-align: left;
+
+    font-size: 13px;
+
+    color: #555;
+}
+
+
+.hero-avatar {
+
+    width: 80px;
+
+    height: 80px;
+
+    margin: 20px auto 15px;
+
+    border-radius: 50%;
+
+    background: #ffb800;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 42px;
+}
+
+
+.hero-card h3 {
+
+    font-size: 24px;
+
+    margin-bottom: 8px;
+}
+
+
+.hero-card p {
+
+    color: #666;
+}
+
+
+.rating {
+
+    margin: 12px 0;
+
+    font-weight: bold;
+}
+
+
+.hero-details {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 13px;
+
+    margin: 20px 0;
+
+    color: #555;
+}
+
+
+.hero-card strong {
+
+    color: #000;
+
+    font-size: 17px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.roles,
+.find-section,
+.map-section,
+.how {
+
+    padding: 100px 8%;
+}
+
+
+.roles {
+
+    background: #f7f4eb;
+}
+
+
+.section-heading {
+
+    text-align: center;
+}
+
+
+.section-heading p {
+
+    color: #d79500;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+}
+
+
+.section-heading h2 {
+
+    font-size: 42px;
+
+    margin-bottom: 12px;
+}
+
+
+.section-heading span {
+
+    color: #666;
+}
+
+
+/* ================= ROLES ================= */
+
+.role-container {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-top: 55px;
+}
+
+
+.role-card {
+
+    width: 370px;
+
+    padding: 45px;
+
+    background: white;
+
+    border: 3px solid #000;
+
+    border-radius: 18px;
+
+    box-shadow: 8px 8px 0 #ffb800;
+
+    text-align: center;
+
+    transition: 0.25s;
+}
+
+
+.role-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 12px 12px 0 #ffb800;
+}
+
+
+.role-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+
+.role-card h3 {
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+
+.role-card p {
+
+    color: #666;
+
+    line-height: 1.7;
+}
+
+
+.role-card button {
+
+    margin-top: 25px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #000;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.role-card button:hover {
+
+    background: #ffb800;
+
+    color: black;
+}
+
+
+/* ================= FIND ================= */
+
+.find-section {
+
+    background: white;
+}
+
+
+.search-box {
+
+    max-width: 950px;
+
+    margin: 45px auto;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.search-box input,
+.search-box select {
+
+    flex: 1;
+
+    padding: 15px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: white;
+}
+
+
+.search-box input:focus,
+.search-box select:focus {
+
+    border-color: #ffb800;
+}
+
+
+.search-box button {
+
+    padding: 15px 25px;
+
+    background: #000;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.search-box button:hover {
+
+    background: #ffb800;
+
+    color: black;
+}
+
+
+/* ================= TUTOR GRID ================= */
+
+.tutor-grid {
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 25px;
+}
+
+
+.tutor-card {
+
+    padding: 25px;
+
+    background: #fdf8e9;
+
+    border: 2px solid #111;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    gap: 18px;
+
+    transition: 0.25s;
+}
+
+
+.tutor-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 7px 7px 0 #ffb800;
+}
+
+
+.avatar {
+
+    width: 60px;
+
+    height: 60px;
+
+    flex-shrink: 0;
+
+    background: #ffb800;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+}
+
+
+.tutor-content {
+
+    width: 100%;
+}
+
+
+.verified {
+
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    background: #d9f4dc;
+
+    color: #176b25;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+.tutor-content h3 {
+
+    margin: 8px 0;
+}
+
+
+.tutor-content p {
+
+    color: #666;
+
+    font-size: 13px;
+
+    margin: 7px 0;
+}
+
+
+.tutor-content .rating {
+
+    margin: 10px 0;
+}
+
+
+.rating small {
+
+    color: #888;
+
+    font-weight: normal;
+}
+
+
+.card-bottom {
+
+    border-top: 1px solid #ddd;
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.card-bottom strong {
+
+    color: #111;
+}
+
+
+.card-bottom button {
+
+    padding: 8px 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #000;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.card-bottom button:hover {
+
+    background: #ffb800;
+
+    color: black;
+}
+
+
+#noResult {
+
+    display: none;
+
+    text-align: center;
+
+    color: #777;
+
+    margin: 40px;
+}
+
+
+/* ================= MAP ================= */
+
+.map-section {
+
+    background: #f7f4eb;
+}
+
+
+.map {
+
+    max-width: 1100px;
+
+    height: 450px;
+
+    margin: 45px auto;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 4px solid #000;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            25deg,
+            #e4ddc8 25%,
+            #d2dfca 25%,
+            #d2dfca 50%,
+            #e4ddc8 50%,
+            #e4ddc8 75%,
+            #d2dfca 75%
+        );
+
+    background-size: 120px 120px;
+}
+
+
+.map-road {
+
+    position: absolute;
+
+    background: #fff;
+
+    transform: rotate(25deg);
+
+    opacity: 0.8;
+}
+
+
+.road1 {
+
+    width: 120%;
+
+    height: 30px;
+
+    top: 25%;
+
+    left: -10%;
+}
+
+
+.road2 {
+
+    width: 120%;
+
+    height: 25px;
+
+    top: 65%;
+
+    left: -10%;
+
+    transform: rotate(-20deg);
+}
+
+
+.road3 {
+
+    width: 25px;
+
+    height: 120%;
+
+    left: 55%;
+
+    top: -10%;
+
+    transform: rotate(20deg);
+}
+
+
+.map-pin {
+
+    position: absolute;
+
+    font-size: 35px;
+
+    cursor: pointer;
+}
+
+
+.map-pin span {
+
+    position: absolute;
+
+    background: #000;
+
+    color: white;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+
+    left: 25px;
+
+    top: 5px;
+}
+
+
+.pin1 {
+
+    top: 20%;
+
+    left: 25%;
+}
+
+
+.pin2 {
+
+    top: 65%;
+
+    left: 70%;
+}
+
+
+.pin3 {
+
+    top: 30%;
+
+    right: 18%;
+}
+
+
+.map-center {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: white;
+
+    border: 3px solid #000;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow: 7px 7px 0 #ffb800;
+}
+
+
+.map-center p {
+
+    color: #666;
+
+    margin-top: 7px;
+}
+
+
+/* ================= HOW ================= */
+
+.how {
+
+    background: #000;
+
+    color: white;
+}
+
+
+.how .section-heading span {
+
+    color: #aaa;
+}
+
+
+.steps {
+
+    max-width: 1100px;
+
+    margin: 55px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.step {
+
+    padding: 25px;
+
+    border-left: 3px solid #ffb800;
+}
+
+
+.step span {
+
+    color: #ffb800;
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+
+.step h3 {
+
+    margin: 18px 0 10px;
+}
+
+
+.step p {
+
+    color: #aaa;
+
+    line-height: 1.6;
+}
+
+
+/* ================= ABOUT ================= */
+
+.about {
+
+    padding: 80px 10%;
+
+    background: #ffb800;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+
+.about > div {
+
+    max-width: 550px;
+}
+
+
+.about h2 {
+
+    font-size: 40px;
+
+    margin-top: 15px;
+}
+
+
+.about > p {
+
+    max-width: 500px;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+
+/* ================= MODAL ================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    z-index: 2000;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.modal-box {
+
+    width: 450px;
+
+    max-width: 100%;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #fdf8e9;
+
+    border: 4px solid #000;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    position: relative;
+
+    box-shadow: 10px 10px 0 #ffb800;
+}
+
+
+.modal-box h2 {
+
+    margin-bottom: 8px;
+}
+
+
+.modal-box > p {
+
+    color: #666;
+
+    margin-bottom: 25px;
+}
+
+
+.close {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 10px;
+
+    background: none;
+
+    border: none;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+.modal-box form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.modal-box input,
+.modal-box select {
+
+    padding: 13px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 7px;
+
+    outline: none;
+}
+
+
+.modal-box input:focus,
+.modal-box select:focus {
+
+    border-color: #ffb800;
+}
+
+
+.form-btn {
+
+    padding: 14px;
+
+    background: #000;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.form-btn:hover {
+
+    background: #ffb800;
+
+    color: black;
+}
+
+
+/* ================= AI ================= */
+
+.ai-button {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 50%;
+
+    border: 3px solid #000;
+
+    background: #ffb800;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    z-index: 1500;
+
+    box-shadow: 5px 5px 0 #000;
+}
+
+
+.chat-box {
+
+    display: none;
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 105px;
+
+    width: 360px;
+
+    background: white;
+
+    border: 3px solid #000;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    z-index: 1600;
+
+    box-shadow: 8px 8px 0 #ffb800;
+}
+
+
+.chat-header {
+
+    padding: 15px;
+
+    background: #000;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+}
+
+
+.chat-header button {
+
+    background: none;
+
+    border: none;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+.chat-messages {
+
+    height: 300px;
+
+    padding: 15px;
+
+    overflow-y: auto;
+}
+
+
+.bot-message,
+.user-message {
+
+    max-width: 85%;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+.bot-message {
+
+    background: #f0ead7;
+}
+
+
+.user-message {
+
+    background: #000;
+
+    color: white;
+
+    margin-left: auto;
+}
+
+
+.chat-input {
+
+    display: flex;
+
+    border-top: 2px solid #ddd;
+}
+
+
+.chat-input input {
+
+    flex: 1;
+
+    padding: 14px;
+
+    border: none;
+
+    outline: none;
+}
+
+
+.chat-input button {
+
+    width: 55px;
+
+    border: none;
+
+    background: #ffb800;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    padding: 50px;
+
+    text-align: center;
+
+    background: #111;
+
+    color: white;
+}
+
+
+.footer-logo img {
+
+    width: 130px;
+
+    margin-bottom: 15px;
+}
+
+
+footer p {
+
+    color: #aaa;
+
+    margin-bottom: 15px;
+}
+
+
+footer small {
+
+    color: #666;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+
+        display: none;
+    }
+
+
+    .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .hero h1 {
+
+        font-size: 45px;
+    }
+
+
+    .hero-buttons {
+
+        justify-content: center;
+    }
+
+
+    .role-container {
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .steps {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .about {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+
+        padding: 70px 6%;
+    }
+
+
+    .hero h1 {
+
+        font-size: 38px;
+    }
+
+
+    .hero-card {
+
+        width: 100%;
+    }
+
+
+    .role-card {
+
+        width: 100%;
+    }
+
+
+    .search-box {
+
+        flex-direction: column;
+    }
+
+
+    .steps {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .chat-box {
+
+        width: calc(100% - 30px);
+
+        right: 15px;
+    }
+
+
+    .about h2 {
+
+        font-size: 30px;
+    }
+
+}
