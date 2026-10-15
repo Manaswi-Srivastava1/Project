@@ -2,7 +2,7 @@
 // WALK-IN TUTOR: FRONTEND (connected to backend)
 // ==========================================
 
-const API = "http://localhost:3100/api";
+const API_URL = "https://project-tufv.onrender.com";
 
 // ---------- HELPERS ----------
 
